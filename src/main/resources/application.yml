@@ -39,4 +39,5 @@ amazon:
     access-key: abc
     secret-key: abc
     region: abc    bucket:
+    bucket:
       sample: base-sample
