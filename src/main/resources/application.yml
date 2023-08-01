@@ -34,3 +34,9 @@ spring:
       path: logs
       max-size: 10KB
       max-history: 7
+amazon:
+  s3:
+    access-key: abc
+    secret-key: abc
+    region: abc    bucket:
+      sample: base-sample
