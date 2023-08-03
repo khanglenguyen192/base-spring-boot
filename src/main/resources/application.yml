@@ -8,11 +8,15 @@ server:
     context-path: /
   shutdown: "graceful"
 
+springdoc:
+  swagger-ui:
+    use-https: false
+
 spring:
   jackson:
     fail-on-unknown-properties: false
   mongo:
-    uri:
+    uri: mongodb://root:123456@localhost:27017/?authSource=admin
     dbname:
       sample: sample
   kafka:

@@ -20,9 +20,8 @@ public class FileDTO {
     private InputStream inputStream;
     private String contentType;
     private String name;
-    private String blobType;
-    private Date createdTime;
-    private Date lastModified;
+    private String originalfileName;
+    private long fileSize;
 
     @Override
     public String toString() {
