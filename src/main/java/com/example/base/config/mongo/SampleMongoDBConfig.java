@@ -20,7 +20,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 )
 @EnableConfigurationProperties
 public class SampleMongoDBConfig {
-    @Value("${spring.mongo.uri")
+    @Value("${spring.mongo.uri}")
     private String uri;
 
     @Value("${spring.mongo.dbname.sample}")

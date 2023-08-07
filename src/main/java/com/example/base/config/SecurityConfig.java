@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @Configuration
@@ -26,7 +27,7 @@ public class SecurityConfig {
 
         http.sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        http.addFilter(jwtTokenFilter);
+        http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.exceptionHandling(excetionConfig -> excetionConfig.authenticationEntryPoint(
                 ((request, response, authException) -> {
                     response.sendError(
@@ -35,6 +36,9 @@ public class SecurityConfig {
                     );
                 })
         ));
+
+        http.authorizeRequests(authorizeConfig -> authorizeConfig.anyRequest()
+                .permitAll());
 
         return http.build();
     }

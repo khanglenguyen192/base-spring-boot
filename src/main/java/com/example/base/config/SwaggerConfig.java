@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
     @Bean
-    public OpenAPI customOpenAPI
+    public OpenAPI openAPI
             (
-                    @Value("${application.desscription}") String appDescription,
+                    @Value("${application.description}") String appDescription,
                     @Value("${application.version}") String appVersion
             ) {
         OpenAPI openAPI = new OpenAPI()

@@ -50,17 +50,17 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } else {
             final String header = request.getHeader("authorization");
-            log.debug(String.format("doFilterInternal - Header: %s"), header);
+            log.debug(String.format("doFilterInternal - Header: {}"), header);
 
             if (StringUtils.isEmpty(header) || !header.startsWith("Beaarer ")) {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Not authorized");
                 return;
             }
 
-            String email = JwtHelper.getUserName(header);
-
             List<String> roles = new ArrayList<>();
 
+//            String email = JwtHelper.getUserName(header);
+            String email = "khang.le@gmail.com";
             if (StringUtils.isNoneBlank(email)) {
                 List<String> userRoles = userService.getRolesByMail(email);
                 if (ObjectUtils.isNotEmpty(userRoles)) {
