@@ -10,28 +10,21 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
+    @Value("${application.description}")
+    private String appDescription;
+
+    @Value("${application.version}")
+    private String appVersion;
+
     @Bean
-    public OpenAPI openAPI
-            (
-                    @Value("${application.description}") String appDescription,
-                    @Value("${application.version}") String appVersion
-            ) {
+    public OpenAPI openAPI() {
         OpenAPI openAPI = new OpenAPI()
                 .info(new Info()
                         .title("Sample Swagger")
-                        .version(appDescription)
-                        .description(appDescription)
-                        .license(new License().name("sample")
-                                .url("http://localhost:8080")));
+                        .version("appDescription")
+                        .description("appDescription")
+                        .license(new License().name("sample")));
 
         return openAPI;
-    }
-
-    @Bean
-    public GroupedOpenApi sampleGroupedApi() {
-        return GroupedOpenApi.builder()
-                .group("SampleCollection")
-                .packagesToScan("com.example.base.controller")
-                .build();
     }
 }
