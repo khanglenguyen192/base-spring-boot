@@ -42,6 +42,6 @@ amazon:
   s3:
     access-key: abc
     secret-key: abc
-    region: abc    bucket:
+    region: abc
     bucket:
       sample: base-sample
