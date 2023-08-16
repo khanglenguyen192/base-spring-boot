@@ -11,22 +11,9 @@ server:
 spring:
   jackson:
     fail-on-unknown-properties: false
-  mongo:
-    uri: mongodb://root:123456@localhost:27017/?authSource=admin
-    dbname:
-      sample: sample
-  kafka:
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      bootstrap-servers:
-        - localhost:9092
-    consumer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-deserializer: org.apache.kafka.common.serialization.StringSerializer
-      auto-offset-reset: earliest
-      bootstrap-servers:
-        - localhost:9092
+  cloud:
+    function:
+      definition: SampleS3LambdaEvent
   logging:
     level:
       root: info
